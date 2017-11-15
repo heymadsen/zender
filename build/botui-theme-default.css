@@ -115,6 +115,11 @@
     animation: loading .6s .1s linear infinite
 }
 
+.loading {
+  opacity: 0;
+  animation: loading-container .1s .6s linear 1 forwards
+}
+
 @keyframes loading {
     0 {
         transform: translate(0, 0);
@@ -132,5 +137,14 @@
     }
     100% {
         transform: translate(0, 0)
+    }
+}
+
+@keyframes loading-container {
+    0 {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

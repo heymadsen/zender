@@ -3,7 +3,7 @@ var botui = new BotUI('zender');
 function init() {
   botui.message
     .bot({
-      delay: 1000,
+      delay: 2000,
       loading: true,
       content: 'Hej there!',
     })
