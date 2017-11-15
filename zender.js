@@ -67,9 +67,17 @@ var recordSerie = function () {
   }).then(function (res) {
     if(res.value == 'yes') {
       botui.message.bot({
-        delay: 2500,
+        delay: 2000,
         loading: true,
-        content: 'Say no more. It’s done! You can find it on your Scheduled Recordings.'
+        content: 'Say no more.'
+      })
+      .then(function () {
+        return botui.message
+          .add({
+            delay: 4000,
+            loading: true,
+            content: ' It’s done! You can find it on your <a href="https://zattoo.com/recordings/">Scheduled Recordings</a>'
+          })
       })
       .then(bye);
     } else {
@@ -130,15 +138,15 @@ var relatedActor = function () {
 var bye = function () {
   botui.message
     .add({
-      delay: 1000,
+      delay: 4000,
       loading: true,
-      content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+      content: 'Phew, that was intense!'
     })
 
     .then(function () {
       return botui.message
         .add({
-          delay: 2000,
+          delay: 4000,
           loading: true,
           content: 'I gotta go refuel my battery now.'
         })
@@ -147,9 +155,9 @@ var bye = function () {
     .then(function () {
       return botui.message
         .add({
-          delay: 1000,
+          delay: 2000,
           loading: true,
-          content: 'Tschüssy'
+          content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
         })
     })
 }
