@@ -115,7 +115,6 @@ function options() {
   });
 }
 
-
 var relatedActor = function () {
   botui.message
     .bot({
