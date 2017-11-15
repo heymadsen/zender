@@ -78,22 +78,42 @@ var recordSerie = function () {
   });
 }
 
+function options() {
+  botui.message
+    .bot({
+      delay: 1500,
+      loading: true,
+      content: 'How do you feel about that?'
+    })
+    .then(function () {
+      return botui.action.button({
+        delay: 1000,
+        action: [{
+          text: 'Love it!',
+          value: 'yes'
+        }, {
+          text: 'Meh',
+          value: 'no'
+        }]
+      })
+  }).then(function (res) {
+    if(res.value == 'yes') {
+      recordSerie();
+    } else {
+      recordSerie()
+      .then(init);
+    }
+  });
+}
+
+
 var relatedActor = function () {
   botui.message
     .bot({
-      delay: 3000,
+      delay: 500,
       loading: true,
       content: 'I see',
     })
-
-    .then(function () {
-    return botui.message
-    .bot({
-      delay: 3000,
-      loading: true,
-      content: 'Here is what they say about the show: "The dark and twisted trials of two plastic surgeons.'
-    })
-
 
     .then(function () {
       return botui.message
