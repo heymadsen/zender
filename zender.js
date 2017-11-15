@@ -40,7 +40,7 @@ function options() {
     if(res.value == 'yes') {
       recordSerie();
     } else {
-      recordSerie()
+      relatedActor()
       .then(init);
     }
   });
@@ -76,7 +76,7 @@ var recordSerie = function () {
           .add({
             delay: 4000,
             loading: true,
-            content: ' It’s done! You can find it on your <a href="https://zattoo.com/recordings/">Scheduled Recordings</a>'
+            content: 'It’s done! You can find it on your <a href="https://zattoo.com/recordings/">Scheduled Recordings</a>'
           })
       })
       .then(bye);
@@ -87,33 +87,47 @@ var recordSerie = function () {
   });
 }
 
-function options() {
+var recordMovie = function () {
   botui.message
     .bot({
       delay: 1500,
       loading: true,
-      content: 'How do you feel about that?'
+      content: 'You know, I can record it for you. Would you like that?'
     })
     .then(function () {
       return botui.action.button({
         delay: 1000,
         action: [{
-          text: 'Love it!',
+          text: 'Sure thing',
           value: 'yes'
         }, {
-          text: 'Meh',
+          text: 'Not Really',
           value: 'no'
         }]
       })
   }).then(function (res) {
     if(res.value == 'yes') {
-      recordSerie();
+      botui.message.bot({
+        delay: 2000,
+        loading: true,
+        content: 'Say no more.'
+      })
+      .then(function () {
+        return botui.message
+          .add({
+            delay: 4000,
+            loading: true,
+            content: 'It’s done! You can find it on your <a href="https://zattoo.com/recordings/">Scheduled Recordings</a>'
+          })
+      })
+      .then(bye);
     } else {
-      recordSerie()
+      byeSad()
       .then(init);
     }
   });
 }
+
 
 var relatedActor = function () {
   botui.message
@@ -137,7 +151,7 @@ var relatedActor = function () {
         .add({
           delay: 4000,
           loading: true,
-          content: 'Speaking of GoT, do you know that Peter Dinklage was in Nip/Tuck?'
+          content: 'Speaking of Game of Thrones, do you know that Peter Dinklage was in Nip/Tuck?'
         })
     })
 
@@ -146,7 +160,7 @@ var relatedActor = function () {
         .add({
           delay: 4000,
           loading: true,
-          content: 'Here’s what they say about the show:'
+          content: 'Here’s what they say about the movie:'
         })
     })
 
@@ -159,7 +173,7 @@ var relatedActor = function () {
         })
     })
 
-    .then(options);
+    .then(recordMovie);
 }
 
 
@@ -187,6 +201,33 @@ var bye = function () {
           delay: 2000,
           loading: true,
           content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+        })
+    })
+}
+
+var byeSad = function () {
+  botui.message
+    .add({
+      delay: 4000,
+      loading: true,
+      content: 'Ouch. Guess I am having a bad hair day'
+    })
+
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 4000,
+          loading: true,
+          content: 'Will had to the saloon now.'
+        })
+    })
+
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 2000,
+          loading: true,
+          content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Here is a cat gif to brighten up your day.</a>'
         })
     })
 }
