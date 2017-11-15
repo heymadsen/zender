@@ -67,9 +67,17 @@ var recordSerie = function () {
   }).then(function (res) {
     if(res.value == 'yes') {
       botui.message.bot({
-        delay: 2500,
+        delay: 2000,
         loading: true,
-        content: 'Say no more. It’s done! You can find it on your Scheduled Recordings.'
+        content: 'Say no more.'
+      })
+      .then(function () {
+        return botui.message
+          .add({
+            delay: 4000,
+            loading: true,
+            content: ' It’s done! You can find it on your <a href="https://zattoo.com/recordings/">Scheduled Recordings</a>'
+          })
       })
       .then(bye);
     } else {
@@ -107,7 +115,6 @@ function options() {
   });
 }
 
-
 var relatedActor = function () {
   botui.message
     .bot({
@@ -127,57 +134,31 @@ var relatedActor = function () {
   })
 }
 
-
-
 var bye = function () {
   botui.message
     .add({
-      delay: 1000,
+      delay: 4000,
       loading: true,
-      content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
+      content: 'Phew, that was intense!'
+    })
 
-  botui.message
-    .add({
-      delay: 2000,
-      loading: true,
-      content: 'I gotta go refuel my battery now.'
-  })
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 4000,
+          loading: true,
+          content: 'I gotta go refuel my battery now.'
+        })
+    })
 
-  botui.message
-    .add({
-      delay: 1000,
-      loading: true,
-      content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-}
-
-
-
-
-
-var bye2 = function () {
-  botui.message.add({
-    delay: 1000,
-    loading: true,
-    content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-  botui.message.add({
-    delay: 2000,
-    loading: true,
-    content: 'I gotta go refuel my battery now.'
-  })
-
-  botui.message.add({
-    delay: 1000,
-    loading: true,
-    content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-
-
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 2000,
+          loading: true,
+          content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+        })
+    })
 }
 
 
