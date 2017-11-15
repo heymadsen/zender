@@ -51,7 +51,7 @@ var recordSerie = function () {
     .bot({
       delay: 1500,
       loading: true,
-      content: 'You know, I can record it for you. Would you like that?'
+      content: 'You know, I can record the next episodes for you. Would you like that?'
     })
     .then(function () {
       return botui.action.button({
@@ -218,7 +218,7 @@ var byeSad = function () {
         .add({
           delay: 4000,
           loading: true,
-          content: 'Will had to the saloon now.'
+          content: 'Will head to the saloon now.'
         })
     })
 
