@@ -51,7 +51,7 @@ var recordSerie = function () {
     .bot({
       delay: 1500,
       loading: true,
-      content: 'You know, I can record the next episodes for you. Would you like that?'
+      content: 'You know, I can record it for you. Would you like that?'
     })
     .then(function () {
       return botui.action.button({
@@ -117,22 +117,52 @@ function options() {
 
 var relatedActor = function () {
   botui.message
-    .bot({
-      delay: 1000,
+    .add({
+      delay: 4000,
       loading: true,
-      content: 'I see',
+      content: 'I see.'
     })
 
     .then(function () {
       return botui.message
-        .bot({
-          delay: 2000,
+        .add({
+          delay: 5000,
           loading: true,
-          content: 'Here is what they say about the show: "The dark and twisted trials of two plastic surgeons.'
-      })
+          content: 'Well, I can not blame you for that'
+        })
+    })
+
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 4000,
+          loading: true,
+          content: 'Speaking of GoT, do you know that Peter Dinklage was in Nip/Tuck?'
+        })
+    })
+
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 4000,
+          loading: true,
+          content: 'Here’s what they say about the show:'
+        })
+    })
+
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 4000,
+          loading: true,
+          content: '<i>The Golden Globe-winning drama explores the world of plastic surgery and the extreme lengths one takes in the quest for external beauty.</i>'
+        })
+    })
+
     .then(options);
-  })
 }
+
+
 
 var bye = function () {
   botui.message
