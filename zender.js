@@ -57,10 +57,10 @@ var recordSerie = function () {
       return botui.action.button({
         delay: 1000,
         action: [{
-          text: 'Record',
+          text: 'Sure thing',
           value: 'yes'
         }, {
-          text: 'Do not record',
+          text: 'Not Really',
           value: 'no'
         }]
       })
@@ -69,8 +69,9 @@ var recordSerie = function () {
       botui.message.bot({
         delay: 2500,
         loading: true,
-        content: 'Say no more. It’s done! You can find it on your Scheduled Recordings'
+        content: 'Say no more. It’s done! You can find it on your Scheduled Recordings.'
       })
+      .then(bye);
     } else {
       relatedActor()
       .then(init);
@@ -110,7 +111,7 @@ function options() {
 var relatedActor = function () {
   botui.message
     .bot({
-      delay: 500,
+      delay: 1000,
       loading: true,
       content: 'I see',
     })
@@ -128,56 +129,55 @@ var relatedActor = function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var changeTemp = function () {
+var bye = function () {
   botui.message
-    .bot({
-      delay: 500,
-      content: 'Change the temperature to ...'
-    })
-    .then(function () {
-      return botui.action.text({
-        delay: 1000,
-        action: {
-          size: 10,
-          icon: 'thermometer-empty',
-          value: temperature, // show the current temperature as default
-          sub_type: 'number',
-          placeholder: '26'
-        }
-      })
-    }).then(function (res) {
-      temperature = res.value; // save new value
-      return botui.message
-        .bot({
-          delay: 1500,
-          loading: true, // pretend like we are doing something
-          content: 'temperature set to ' + res.value
-        });
-    }).then(init); // loop to initial state
+    .add({
+      delay: 1000,
+      loading: true,
+      content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+  })
+
+  botui.message
+    .add({
+      delay: 2000,
+      loading: true,
+      content: 'I gotta go refuel my battery now.'
+  })
+
+  botui.message
+    .add({
+      delay: 1000,
+      loading: true,
+      content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+  })
+
+}
+
+
+
+
+
+var bye2 = function () {
+  botui.message.add({
+    delay: 1000,
+    loading: true,
+    content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+  })
+
+  botui.message.add({
+    delay: 2000,
+    loading: true,
+    content: 'I gotta go refuel my battery now.'
+  })
+
+  botui.message.add({
+    delay: 1000,
+    loading: true,
+    content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
+  })
+
+
+
 }
 
 
