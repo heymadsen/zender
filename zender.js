@@ -127,57 +127,31 @@ var relatedActor = function () {
   })
 }
 
-
-
 var bye = function () {
   botui.message
     .add({
       delay: 1000,
       loading: true,
       content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
+    })
 
-  botui.message
-    .add({
-      delay: 2000,
-      loading: true,
-      content: 'I gotta go refuel my battery now.'
-  })
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 2000,
+          loading: true,
+          content: 'I gotta go refuel my battery now.'
+        })
+    })
 
-  botui.message
-    .add({
-      delay: 1000,
-      loading: true,
-      content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-}
-
-
-
-
-
-var bye2 = function () {
-  botui.message.add({
-    delay: 1000,
-    loading: true,
-    content: 'Phew, that was intense! <a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-  botui.message.add({
-    delay: 2000,
-    loading: true,
-    content: 'I gotta go refuel my battery now.'
-  })
-
-  botui.message.add({
-    delay: 1000,
-    loading: true,
-    content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Tschüssy</a>'
-  })
-
-
-
+    .then(function () {
+      return botui.message
+        .add({
+          delay: 1000,
+          loading: true,
+          content: 'Tschüssy'
+        })
+    })
 }
 
 
