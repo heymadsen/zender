@@ -3,6 +3,31 @@ var botui = new BotUI('zender');
 function init() {
   botui.message
     .bot({
+      delay: 1500,
+      loading: true,
+      content: 'zzZzzzzZzzz...'
+    })
+    .then(function () {
+      return botui.action.button({
+        delay: 1000,
+        action: [{
+          text: 'Let`s chat!',
+          value: 'yes'
+        }]
+      })
+  }).then(function (res) {
+    if(res.value == 'yes') {
+      hej();
+    } else {
+      relatedActor()
+      .then(hej);
+    }
+  });
+}
+
+function hej() {
+  botui.message
+    .bot({
       delay: 2000,
       loading: true,
       content: 'Hej there!',
@@ -41,7 +66,7 @@ function options() {
       recordSerie();
     } else {
       relatedActor()
-      .then(init);
+      .then(hej);
     }
   });
 }
@@ -82,7 +107,7 @@ var recordSerie = function () {
       .then(bye);
     } else {
       relatedActor()
-      .then(init);
+      .then(hej);
     }
   });
 }
@@ -123,7 +148,7 @@ var recordMovie = function () {
       .then(bye);
     } else {
       byeSad()
-      .then(init);
+      .then(hej);
     }
   });
 }
