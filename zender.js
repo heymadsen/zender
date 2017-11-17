@@ -1,30 +1,5 @@
 var botui = new BotUI('zender');
 
-function init() {
-  botui.message
-    .bot({
-      delay: 1500,
-      loading: true,
-      content: 'zzZzzzzZzzz...'
-    })
-    .then(function () {
-      return botui.action.button({
-        delay: 1000,
-        action: [{
-          text: 'Let`s chat!',
-          value: 'yes'
-        }]
-      })
-  }).then(function (res) {
-    if(res.value == 'yes') {
-      hej();
-    } else {
-      relatedActor()
-      .then(hej);
-    }
-  });
-}
-
 function hej() {
   botui.message
     .bot({
@@ -37,7 +12,7 @@ function hej() {
         .bot({
           delay: 2000,
           loading: true,
-          content: 'I don’t know you, but I love Game of Thrones'
+          content: 'I don’t know you, but I really like Game of Thrones'
       })
     .then(options);
   })
@@ -206,7 +181,7 @@ var relatedActor = function () {
 var bye = function () {
   botui.message
     .add({
-      delay: 4000,
+      delay: 6000,
       loading: true,
       content: 'Phew, that was intense!'
     })
@@ -250,7 +225,7 @@ var byeSad = function () {
     .then(function () {
       return botui.message
         .add({
-          delay: 2000,
+          delay: 4000,
           loading: true,
           content: '<a href="https://media.giphy.com/media/7lWMhFRq5Z4xa/giphy.gif">Here is a cat gif to brighten up your day.</a>'
         })
@@ -258,4 +233,4 @@ var byeSad = function () {
 }
 
 
-init();
+hej();
